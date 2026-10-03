@@ -3,286 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maa Santoshi Agro | Minimal Portal</title>
+    <title>Maa Santoshi Agro | Multi-Theme Minimal Portal Showcase</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts Plus Jakarta Sans & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
                     },
-                    colors: {
-                        earth: {
-                            50: '#f6f7f4',
-                            100: '#e9ebe3',
-                            600: '#526e4e',
-                            700: '#40563c',
-                            800: '#32442f',
-                        }
-                    }
                 }
             }
         }
     </script>
     <style>
-        /* Custom smooth scroll and subtle transitions */
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        /* Glassmorphism card utilities */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(220, 225, 215, 0.6);
-        }
-        .dark-glass {
-            background: rgba(40, 50, 42, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
+        
+        /* Custom Theme Styles */
+        /* Theme 1: Modern Corporate Sage */
+        body.theme-sage { background-color: #f6f7f4; color: #2c352b; }
+        body.theme-sage .theme-card { background: rgba(255, 255, 255, 0.9); border: 1px solid #e1e7de; box-shadow: 0 4px 20px -2px rgba(82, 110, 78, 0.06); }
+        body.theme-sage .theme-card:hover { border-color: #526e4e; box-shadow: 0 10px 25px -5px rgba(82, 110, 78, 0.12); }
+        body.theme-sage .theme-btn-primary { background-color: #40563c; color: white; }
+        body.theme-sage .theme-btn-primary:hover { background-color: #32442f; }
+        body.theme-sage .accent-text { color: #40563c; }
+
+        /* Theme 2: Monochrome Editorial */
+        body.theme-mono { background-color: #f8fafc; color: #0f172a; }
+        body.theme-mono .theme-card { background: #ffffff; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        body.theme-mono .theme-card:hover { border-color: #0f172a; box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        body.theme-mono .theme-btn-primary { background-color: #0f172a; color: white; }
+        body.theme-mono .theme-btn-primary:hover { background-color: #334155; }
+        body.theme-mono .accent-text { color: #0f172a; }
+        body.theme-mono h1, body.theme-mono h2 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+        /* Theme 3: Warm Terracotta Organic */
+        body.theme-warm { background-color: #fcf9f5; color: #3d2c26; }
+        body.theme-warm .theme-card { background: rgba(255, 255, 255, 0.95); border: 1px solid #ecdcd0; box-shadow: 0 4px 15px rgba(186, 96, 60, 0.05); }
+        body.theme-warm .theme-card:hover { border-color: #b56341; box-shadow: 0 8px 25px rgba(186, 96, 60, 0.12); }
+        body.theme-warm .theme-btn-primary { background-color: #b56341; color: white; }
+        body.theme-warm .theme-btn-primary:hover { background-color: #9a5234; }
+        body.theme-warm .accent-text { color: #b56341; }
+
+        /* Theme 4: Glassmorphism Dark Minimal */
+        body.theme-glass { background-color: #0f172a; color: #f1f5f9; background-image: radial-gradient(circle at 10% 20%, rgba(30, 41, 59, 1) 0%, rgba(15, 23, 42, 1) 90%); }
+        body.theme-glass .theme-card { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
+        body.theme-glass .theme-card:hover { border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 12px 40px rgba(56, 189, 248, 0.15); }
+        body.theme-glass .theme-btn-primary { background-color: #38bdf8; color: #0f172a; font-weight: 600; }
+        body.theme-glass .theme-btn-primary:hover { background-color: #7dd3fc; }
+        body.theme-glass .accent-text { color: #38bdf8; }
+
+        .transition-all-custom { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 </head>
-<body class="h-full bg-earth-50 text-stone-800 flex flex-col justify-between selection:bg-earth-600 selection:text-white">
+<body class="theme-sage min-h-full flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
 
     <div id="preloader" class="fixed inset-0 z-50 bg-stone-900 text-stone-100 flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
         <div class="relative w-20 h-20 mb-6 rounded-2xl overflow-hidden shadow-2xl border border-stone-700 bg-stone-800 flex items-center justify-center">
-            <span class="text-2xl font-bold text-earth-600"><i class="fa-solid fa-seedling"></i></span>
+            <span class="text-3xl font-bold text-emerald-500"><i class="fa-solid fa-seedling animate-bounce"></i></span>
         </div>
         <h2 class="text-xl font-semibold tracking-wide text-stone-200 text-center px-4">Maa Santoshi Agro</h2>
         <p class="text-xs text-stone-400 mt-2 tracking-widest uppercase">Laikera & Patrapali, Kuchinda</p>
         <div class="mt-6 w-32 h-0.5 bg-stone-800 rounded-full overflow-hidden">
-            <div class="bg-earth-600 h-full w-full animate-pulse"></div>
+            <div class="bg-emerald-500 h-full w-full animate-pulse"></div>
         </div>
     </div>
 
-    <header class="w-full py-6 px-6 sm:px-12 flex items-center justify-between z-10">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-xl bg-earth-700 text-white flex items-center justify-center shadow-sm">
-                <i class="fa-solid fa-leaf text-sm"></i>
+    <div class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-stone-200 dark:border-slate-800 px-4 py-3 shadow-sm transition-colors">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center space-x-2">
+                <span class="text-xs font-bold uppercase tracking-wider opacity-75"><i class="fa-solid fa-palette mr-1.5"></i> Design Concept:</span>
+                <span id="active-theme-name" class="text-xs font-bold px-2.5 py-1 rounded-md bg-stone-200 dark:bg-slate-800">Modern Corporate Sage</span>
             </div>
-            <div>
-                <span class="font-bold tracking-tight text-lg sm:text-xl block leading-tight text-stone-900">Maa Santoshi Agro</span>
-                <span class="text-xs text-stone-500 font-medium">Authorized Agri-Input Dealer</span>
+            <div class="flex items-center space-x-2 overflow-x-auto py-1">
+                <button onclick="setTheme('sage', 'Modern Corporate Sage')" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-[#40563c] text-white shadow-xs theme-switcher-btn" data-theme="sage">1. Sage Corporate</button>
+                <button onclick="setTheme('mono', 'Monochrome Editorial')" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-stone-200 text-stone-800 dark:bg-slate-800 dark:text-stone-300 theme-switcher-btn" data-theme="mono">2. Monochrome</button>
+                <button onclick="setTheme('warm', 'Warm Terracotta Organic')" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-stone-200 text-stone-800 dark:bg-slate-800 dark:text-stone-300 theme-switcher-btn" data-theme="warm">3. Terracotta</button>
+                <button onclick="setTheme('glass', 'Glassmorphism Dark')" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-stone-200 text-stone-800 dark:bg-slate-800 dark:text-stone-300 theme-switcher-btn" data-theme="glass">4. Dark Glass</button>
             </div>
         </div>
-        <div class="hidden sm:flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider bg-white px-3 py-1.5 rounded-full border border-stone-200 text-stone-600 shadow-xs">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block mr-1"></span>
-            Operational Centers Active
+    </div>
+
+    <header class="w-full py-8 px-6 sm:px-12 flex flex-col sm:flex-row items-center justify-between gap-4 z-10 max-w-6xl mx-auto">
+        <div class="flex items-center space-x-3.5 text-center sm:text-left">
+            <div class="w-12 h-12 rounded-2xl theme-btn-primary flex items-center justify-center shadow-md">
+                <i class="fa-solid fa-leaf text-lg"></i>
+            </div>
+            <div>
+                <span class="font-bold tracking-tight text-xl sm:text-2xl block leading-tight">Maa Santoshi Agro</span>
+                <span class="text-xs font-medium opacity-75">Authorized Agri-Input Dealer • Kuchinda</span>
+            </div>
+        </div>
+        <div class="flex items-center space-x-3">
+            <button onclick="openBranchModal('laikera')" class="theme-card px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 transition-all-custom hover:scale-105">
+                <i class="fa-solid fa-store accent-text"></i>
+                <span>Laikera Branch</span>
+            </button>
+            <button onclick="openBranchModal('patrapali')" class="theme-card px-4 py-2 rounded-xl text-xs font-semibold flex items-center space-x-2 transition-all-custom hover:scale-105">
+                <i class="fa-solid fa-warehouse accent-text"></i>
+                <span>Patrapali Warehouse</span>
+            </button>
         </div>
     </header>
 
-    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-8 sm:py-12 flex flex-col justify-center z-10">
-        <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-stone-900 mb-3">Farmer Services & Portals</h1>
-            <p class="text-stone-600 text-sm sm:text-base font-normal">Quick access to Odisha government agricultural portals, subsidy tracking, and dealer tools.</p>
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-6 sm:py-8 flex flex-col justify-center z-10">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <h1 class="text-3xl sm:text-4xl font-bold tracking-tight mb-3">Odisha Agricultural Portals</h1>
+            <p class="text-sm sm:text-base opacity-80 font-normal">Instant access to government subsidy tracking, verification portals, and dealer tools.</p>
         </div>
 
-        <!-- Links Grid Container -->
+        <!-- 13 Responsive Portal Buttons Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             
             <!-- Link 1 -->
             <button onclick="window.open('https://agrisnetodisha.ori.nic.in/stock/farmer/FarmerInquiry.aspx', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-id-card text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-id-card text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Farmer ID Enquiry</span>
-                        <span class="text-xs text-stone-400">Agrisnet verification</span>
+                        <span class="font-semibold text-sm sm:text-base block group-hover:opacity-100">Farmer ID Enquiry</span>
+                        <span class="text-xs opacity-60">Agrisnet verification</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 2 -->
             <button onclick="window.open('https://krushak.odisha.gov.in/citizen-portal/login', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-user-check text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-user-check text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Krushak Odisha</span>
-                        <span class="text-xs text-stone-400">Citizen portal login</span>
+                        <span class="font-semibold text-sm sm:text-base block">Krushak Odisha</span>
+                        <span class="text-xs opacity-60">Citizen portal login</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 3 -->
             <button onclick="window.open('https://fmdbt.agriodisha.nic.in/public/chktarget', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-bullseye text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bullseye text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Target Check</span>
-                        <span class="text-xs text-stone-400">Machinery allocation status</span>
+                        <span class="font-semibold text-sm sm:text-base block">Target Check</span>
+                        <span class="text-xs opacity-60">Machinery allocation status</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 4 -->
             <button onclick="window.open('https://sugam.odisha.gov.in/website/citizen-portal/login', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-file-shield text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-shield text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Sugam Odisha</span>
-                        <span class="text-xs text-stone-400">Licensing & clearances</span>
+                        <span class="font-semibold text-sm sm:text-base block">Sugam Odisha</span>
+                        <span class="text-xs opacity-60">Licensing & clearances</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 5 -->
             <button onclick="window.open('https://odishafarmmachinery.nic.in/FMN/Pump_APPFORM_NEW.aspx', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-file-circle-plus text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-file-circle-plus text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Permit Generation</span>
-                        <span class="text-xs text-stone-400">New application form</span>
+                        <span class="font-semibold text-sm sm:text-base block">Permit Generation</span>
+                        <span class="text-xs opacity-60">New application form</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 6 -->
             <button onclick="window.open('https://odishafarmmachinery.nic.in/FMN/Permit_Reprint.aspx', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-print text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-print text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Permit Reprint</span>
-                        <span class="text-xs text-stone-400">Download active permits</span>
+                        <span class="font-semibold text-sm sm:text-base block">Permit Reprint</span>
+                        <span class="text-xs opacity-60">Download active permits</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 7 -->
             <button onclick="window.open('https://odishafarmmachinery.nic.in/FMN/FMNDBT_PayFullCost.aspx', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-credit-card text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-credit-card text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Full Cost Payment</span>
-                        <span class="text-xs text-stone-400">Secure transaction portal</span>
+                        <span class="font-semibold text-sm sm:text-base block">Full Cost Payment</span>
+                        <span class="text-xs opacity-60">Secure transaction portal</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 8 -->
             <button onclick="window.open('https://odishafarmmachinery.nic.in/FMN/FMNDBT_CHKPMNTSTATUS.aspx', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-receipt text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-receipt text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Track Payment Status</span>
-                        <span class="text-xs text-stone-400">Verify payment receipts</span>
+                        <span class="font-semibold text-sm sm:text-base block">Track Payment Status</span>
+                        <span class="text-xs opacity-60">Verify payment receipts</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 9 -->
             <button onclick="window.open('https://odishafarmmachinery.nic.in/FMN/ChkStatus.aspx', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-spinner text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-spinner text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Permit Status</span>
-                        <span class="text-xs text-stone-400">Check approval stage</span>
+                        <span class="font-semibold text-sm sm:text-base block">Permit Status</span>
+                        <span class="text-xs opacity-60">Check approval stage</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 10 -->
             <button onclick="window.open('https://odishafarmmachinery.nic.in/FMN/Login.aspx', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-right-to-bracket text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-right-to-bracket text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Dealer Login</span>
-                        <span class="text-xs text-stone-400">Authorized vendor access</span>
+                        <span class="font-semibold text-sm sm:text-base block">Dealer Login</span>
+                        <span class="text-xs opacity-60">Authorized vendor access</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 11 -->
             <button onclick="window.open('https://agrisnetodisha.ori.nic.in', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-globe text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-globe text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Agrisnet Portal</span>
-                        <span class="text-xs text-stone-400">Main agricultural network</span>
+                        <span class="font-semibold text-sm sm:text-base block">Agrisnet Portal</span>
+                        <span class="text-xs opacity-60">Main agricultural network</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 12 -->
             <button onclick="window.open('https://fmdbt.agriodisha.nic.in', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-tractor text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-tractor text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">Farm Machinery</span>
-                        <span class="text-xs text-stone-400">DBT scheme portal</span>
+                        <span class="font-semibold text-sm sm:text-base block">Farm Machinery</span>
+                        <span class="text-xs opacity-60">DBT scheme portal</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
             <!-- Link 13 -->
             <button onclick="window.open('https://myaadhaar.uidai.gov.in/', '_blank')" 
-                class="glass-card p-5 rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex items-center justify-between group text-left hover:border-earth-600 sm:col-span-2 lg:col-span-1">
+                class="theme-card p-5 rounded-2xl transition-all-custom flex items-center justify-between group text-left sm:col-span-2 lg:col-span-1">
                 <div class="flex items-center space-x-4">
-                    <div class="w-10 h-10 rounded-xl bg-earth-50 text-earth-700 flex items-center justify-center group-hover:bg-earth-700 group-hover:text-white transition-colors duration-300">
-                        <i class="fa-solid fa-fingerprint text-sm"></i>
+                    <div class="w-10 h-10 rounded-xl bg-black/5 dark:bg-white/5 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-fingerprint text-sm accent-text"></i>
                     </div>
                     <div>
-                        <span class="font-semibold text-stone-800 text-sm sm:text-base block group-hover:text-earth-700 transition-colors">DBT Link Check</span>
-                        <span class="text-xs text-stone-400">Aadhaar bank mapping</span>
+                        <span class="font-semibold text-sm sm:text-base block">DBT Link Check</span>
+                        <span class="text-xs opacity-60">Aadhaar bank mapping</span>
                     </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-stone-300 text-xs group-hover:text-earth-700 transition-colors"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-40 group-hover:opacity-100 transition-opacity"></i>
             </button>
 
         </div>
@@ -291,10 +324,9 @@
     <footer class="w-full bg-stone-900 text-stone-300 pt-10 pb-8 px-6 sm:px-12 mt-16 border-t border-stone-800">
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
-            <!-- Left Info Block -->
             <div class="lg:col-span-5 space-y-4">
                 <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 rounded-lg bg-earth-700 text-white flex items-center justify-center">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center">
                         <i class="fa-solid fa-leaf text-xs"></i>
                     </div>
                     <span class="text-white font-bold text-lg tracking-tight">Maa Santoshi Agro</span>
@@ -304,68 +336,53 @@
                 </p>
                 <div class="space-y-2.5 pt-2 text-sm">
                     <p class="flex items-center space-x-3 text-stone-300">
-                        <i class="fa-solid fa-phone text-earth-500 w-4"></i>
+                        <i class="fa-solid fa-phone text-emerald-500 w-4"></i>
                         <a href="tel:+917894675122" class="hover:text-white transition-colors">+91 7894675122</a>
                     </p>
                     <p class="flex items-center space-x-3 text-stone-300">
-                        <i class="fa-solid fa-envelope text-earth-500 w-4"></i>
+                        <i class="fa-solid fa-envelope text-emerald-500 w-4"></i>
                         <a href="mailto:maasantoshiagro@gmail.com" class="hover:text-white transition-colors">maasantoshiagro@gmail.com</a>
                     </p>
                     <p class="flex items-center space-x-3 text-stone-300">
-                        <i class="fa-brands fa-whatsapp text-earth-500 w-4"></i>
+                        <i class="fa-brands fa-whatsapp text-emerald-500 w-4"></i>
                         <a href="https://wa.me/917894675122" target="_blank" class="hover:text-white transition-colors">Chat on WhatsApp</a>
                     </p>
                     <p class="flex items-start space-x-3 text-stone-300 pt-1">
-                        <i class="fa-solid fa-location-dot text-earth-500 w-4 mt-0.5"></i>
+                        <i class="fa-solid fa-location-dot text-emerald-500 w-4 mt-0.5"></i>
                         <span>At: Laikera & At: Patrapali, Kuchinda, Odisha</span>
                     </p>
                 </div>
             </div>
 
-            <!-- Right Maps Grid -->
             <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 
-                <!-- Laikera Branch Map -->
                 <div class="bg-stone-800/80 p-3 rounded-2xl border border-stone-700/60 shadow-md">
                     <div class="flex items-center justify-between mb-2 px-1">
                         <span class="text-xs font-semibold text-stone-200 flex items-center space-x-2">
-                            <i class="fa-solid fa-store text-earth-500"></i>
+                            <i class="fa-solid fa-store text-emerald-500"></i>
                             <span>Laikera Branch</span>
                         </span>
-                        <span class="text-[10px] text-stone-400 bg-stone-900 px-2 py-0.5 rounded-full">Store</span>
+                        <button onclick="openBranchModal('laikera')" class="text-[10px] text-stone-400 hover:text-white bg-stone-900 px-2 py-0.5 rounded-full transition-colors">Expand Map</button>
                     </div>
                     <div class="rounded-xl overflow-hidden border border-stone-700 h-[130px]">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.124664929888!2d84.2145089!3d21.8912747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a20f92f087f56ed%3A0xb14edaa688a28c79!2sMaa%20Santoshi%20Agro!5e0!3m2!1sen!2sin!4v1789062052601!5m2!1sen!2sin" 
-                            width="100%" 
-                            height="130" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                            width="100%" height="130" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
 
-                <!-- Patrapali Branch Map -->
                 <div class="bg-stone-800/80 p-3 rounded-2xl border border-stone-700/60 shadow-md">
                     <div class="flex items-center justify-between mb-2 px-1">
                         <span class="text-xs font-semibold text-stone-200 flex items-center space-x-2">
-                            <i class="fa-solid fa-warehouse text-earth-500"></i>
+                            <i class="fa-solid fa-warehouse text-emerald-500"></i>
                             <span>Patrapali Branch</span>
                         </span>
-                        <span class="text-[10px] text-stone-400 bg-stone-900 px-2 py-0.5 rounded-full">Warehouse</span>
+                        <button onclick="openBranchModal('patrapali')" class="text-[10px] text-stone-400 hover:text-white bg-stone-900 px-2 py-0.5 rounded-full transition-colors">Expand Map</button>
                     </div>
                     <div class="rounded-xl overflow-hidden border border-stone-700 h-[130px]">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.0560224015157!2d84.3539303!3d21.7780927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2055007ace7c27%3A0xdd52542e913aeec5!2sMaa%20Santoshi%20Agro!5e0!3m2!1sen!2sin!4v1789062146934!5m2!1sen!2sin" 
-                            width="100%" 
-                            height="130" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                            width="100%" height="130" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
 
@@ -374,18 +391,102 @@
 
         <div class="max-w-6xl mx-auto mt-8 pt-6 border-t border-stone-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500">
             <p>&copy; 2026 Maa Santoshi Agro. All rights reserved.</p>
-            <p class="mt-2 sm:mt-0">Designed with minimalist clarity for efficient farming support.</p>
+            <p class="mt-2 sm:mt-0">Multi-Theme Minimalist Design System Showcase.</p>
         </div>
     </footer>
 
+    <div id="branch-modal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-stone-200 dark:border-slate-800">
+            <button onclick="closeBranchModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-stone-100 dark:bg-slate-800 flex items-center justify-center text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center space-x-3 mb-4">
+                <div id="modal-icon" class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg"></div>
+                <div>
+                    <h3 id="modal-title" class="text-xl font-bold">Branch Title</h3>
+                    <p class="text-xs opacity-60">Maa Santoshi Agro Operations</p>
+                </div>
+            </div>
+            <div id="modal-content" class="rounded-2xl overflow-hidden border border-stone-200 dark:border-slate-800 h-[280px] mb-4"></div>
+            <div class="flex items-center justify-between text-xs opacity-75 pt-2 border-t border-stone-100 dark:border-slate-800">
+                <span id="modal-address">Kuchinda, Odisha</span>
+                <a id="modal-directions" href="#" target="_blank" class="font-semibold text-emerald-600 dark:text-emerald-400 hover:underline flex items-center space-x-1">
+                    <span>Open in Google Maps</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Preloader removal
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             preloader.style.opacity = '0';
-            setTimeout(function(){
-                preloader.style.display = 'none';
-            }, 600);
+            setTimeout(() => preloader.style.display = 'none', 600);
         });
+
+        // Theme Switcher Function
+        function setTheme(themeKey, themeName) {
+            const body = document.body;
+            body.className = body.className.replace(/theme-\w+/g, '');
+            body.classList.add(`theme-${themeKey}`);
+            
+            if(themeKey === 'glass') {
+                body.classList.add('dark');
+            } else {
+                body.classList.remove('dark');
+            }
+
+            document.getElementById('active-theme-name').innerText = themeName;
+
+            // Update button styles in switcher
+            document.querySelectorAll('.theme-switcher-btn').forEach(btn => {
+                if(btn.dataset.theme === themeKey) {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-medium transition-all theme-btn-primary shadow-xs theme-switcher-btn";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-stone-200 text-stone-800 dark:bg-slate-800 dark:text-stone-300 theme-switcher-btn";
+                }
+            });
+        }
+
+        // Branch Modal Controller
+        const branchData = {
+            laikera: {
+                title: "Laikera Branch (Primary Store)",
+                icon: '<i class="fa-solid fa-store"></i>',
+                address: "At: Laikera, Kuchinda, Odisha",
+                map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3702.124664929888!2d84.2145089!3d21.8912747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a20f92f087f56ed%3A0xb14edaa688a28c79!2sMaa%20Santoshi%20Agro!5e0!3m2!1sen!2sin!4v1789062052601!5m2!1sen!2sin',
+                link: 'https://maps.app.goo.gl/MaaSantoshiAgroLaikera'
+            },
+            patrapali: {
+                title: "Patrapali Branch (Warehouse & Depo)",
+                icon: '<i class="fa-solid fa-warehouse"></i>',
+                address: "At: Patrapali, Kuchinda, Odisha",
+                map: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.0560224015157!2d84.3539303!3d21.7780927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2055007ace7c27%3A0xdd52542e913aeec5!2sMaa%20Santoshi%20Agro!5e0!3m2!1sen!2sin!4v1789062146934!5m2!1sen!2sin',
+                link: 'https://maps.app.goo.gl/MaaSantoshiAgroPatrapali'
+            }
+        };
+
+        function openBranchModal(branch) {
+            const data = branchData[branch];
+            document.getElementById('modal-title').innerText = data.title;
+            document.getElementById('modal-icon').innerHTML = data.icon;
+            document.getElementById('modal-address').innerText = data.address;
+            document.getElementById('modal-content').innerHTML = `<iframe src="${data.map}" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>`;
+            document.getElementById('modal-directions').href = data.link;
+            
+            const modal = document.getElementById('branch-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeBranchModal() {
+            const modal = document.getElementById('branch-modal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            document.getElementById('modal-content').innerHTML = '';
+        }
     </script>
 </body>
 </html>
